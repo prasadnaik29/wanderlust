@@ -1,0 +1,103 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient(
+    90deg,
+    #fffbff 0%,
+    #fffcfe 100%
+  );
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* NAVBAR */
+.navbar {
+  top: 0;
+  z-index: 1000;
+  height: 5rem;
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+}
+
+.fa-compass {
+  color: #e91e63;
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.fa-compass:hover {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.nav-link {
+  color: #1f1f1f !important;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #e91e63 !important;
+}
+
+/* CARD */
+.card-link {
+  text-decoration: none;
+}
+
+.card {
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+.card-body {
+  background-color: #ffffff !important;
+  padding: 1.2rem;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #111827;
+}
+
+.card-text {
+  color: #6b7280;
+}
+
+.price {
+  font-weight: 600;
+  color: #111827;
+}
+
+.per-night {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+
+/* Subtle image overlay effect */
+.card-img-overlay:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(90deg, #111827, #271f37);
+}
+

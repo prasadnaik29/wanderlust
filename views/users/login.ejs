@@ -1,0 +1,40 @@
+<% layout('/layouts/boilerplate') -%>
+<body>
+  <h1 class="text-center my-4">Login</h1>
+
+  <form
+    method="POST"
+    action="/login"
+    class="container my-5 needs-validation"
+    style="max-width: 500px"
+    novalidate
+  >
+    <div class="form-group mb-2">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        id="username"
+        required
+      />
+      <div class="invalid-feedback">Please enter a username</div>
+    </div>
+
+    <div class="form-group mb-2">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        id="password"
+        required
+      />
+      <div class="invalid-feedback">Please enter a password</div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-3">
+      <button type="submit" class="btn btn-success">Login</button>
+    </div>
+  </form>
+</body>

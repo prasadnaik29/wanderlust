@@ -1,0 +1,167 @@
+<% layout('/layouts/boilerplate') -%>
+<style>
+
+#categories{
+  display:flex;
+  flex-wrap: wrap;
+  align-items:center;
+  gap:25px;
+}
+
+.category{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin-top: 10px;
+  opacity:.65;
+  cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:0.4s;
+}
+
+.category i{
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.category p{
+  font-size:12px;
+  margin:0;
+  white-space:nowrap;
+}
+
+.category:hover{
+  opacity:1;
+}
+
+.category.active{
+  opacity:1;
+  border-bottom:2px solid #fe424d;
+}
+
+.tax{
+  display: none;
+}
+
+.tax-toggle{
+  border: 1px solid rgba(128, 128, 128, 0.63);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.03);
+
+}
+
+.tax-toggle:hover{
+  border: 1px solid rgba(49, 49, 49, 0.753);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+}
+</style>
+<div class="cat-wrapper mt-3 d-flex justify-content-center">
+  <div id="categories">
+    <div class="category">
+      <i class="fa-solid fa-fire"></i>
+      <p>Trending</p>
+    </div>
+    <div class="category">
+      <i class="fa-solid fa-bed"></i>
+      <p>Rooms</p>
+    </div>
+    <div class="category">
+      <i class="fa-solid fa-mountain-city"></i>
+      <p>Iconic Cities</p>
+    </div>
+    <div class="category">
+      <i class="fa-solid fa-mountain"></i>
+      <p>Mountains</p>
+    </div>
+    <div class="category">
+      <i class="fa-brands fa-fort-awesome"></i>
+      <p>Castles</p>
+    </div>
+    <div class="category">
+      <i class="fa-solid fa-person-swimming"></i>
+      <p>Pools</p>
+    </div>
+    <div class="category">
+      <i class="fa-solid fa-campground"></i>
+      <p>Camping</p>
+    </div>
+    <div class="category">
+      <i class="fa-solid fa-cow"></i>
+      <p>Farms</p>
+    </div>
+    <div class="category">
+      <i class="fa-regular fa-snowflake"></i>
+      <p>Arctic</p>
+    </div>
+    <div class="category">
+      <i class="fa-solid fa-igloo"></i>
+      <p>Domes</p>
+    </div>
+    <div class="category">
+      <i class="fa-solid fa-ship"></i>
+      <p>Boats</p>
+    </div>
+  </div>
+
+  <div class="tax-toggle px-3 ms-5">
+    <div class=" form-check-reverse form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+    <label class="form-check-label" for="switchCheckDefault">Display Taxes</label>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <div class="row">
+    <% allListings.forEach(listing => { %>
+
+      <div class="col-lg-4 col-md-6 col-11 mb-4">
+        <a class="card-link text-decoration-none" href="/listings/<%= listing._id %>">
+          <div class="card h-100">
+            <img src="<%= listing.image.url %>"
+                 style="height: 15rem; object-fit: cover;"
+                 class="rounded card-img-top img-fluid" 
+                 alt="Hotel Image">
+            <div class="card-img-overlay"></div>
+
+            <div class="card-body">
+              <h5 class="card-title"><%= listing.title %></h5>
+              <span class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %></span>
+              <span class="per-night">/ Night</span>
+              <span class="tax text-muted initialism ""><i>&nbsp; +18% GST</i></span>
+              <h6><i class=" fa-solid fa-location-dot"></i><%= listing.country %></h6>            
+            </div>
+          </div>
+        </a>
+      </div>
+
+    <% }); %>
+  </div>
+</div>
+
+<script>
+const filters = document.querySelectorAll(".category");
+let taxSwitch = document.getElementById("switchCheckDefault");
+
+filters.forEach(f=>{
+  f.addEventListener("click",()=>{
+    filters.forEach(el=>el.classList.remove("active"));
+    f.classList.add("active");
+  });
+});
+
+taxSwitch.addEventListener("click", ()=>{
+  let taxInfo = document.getElementsByClassName("tax");
+  for(info of taxInfo){
+    if(info.style.display != "inline"){
+      info.style.display = "inline";
+    } else{
+      info.style.display = "none";
+    }
+  }
+});
+</script>

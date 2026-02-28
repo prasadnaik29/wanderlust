@@ -1,0 +1,88 @@
+<% layout('/layouts/boilerplate') -%>
+<body>
+  <h1 class="text-center mt-4">Edit Listing</h1>
+
+  <form
+    method="POST"
+    action="/listings/<%= listing._id %>?_method=PUT"
+    class="container my-5"
+    style="max-width: 500px"
+    enctype="multipart/form-data"
+  >
+    <div class="form-group mb-2">
+      <label>Title</label>
+      <input
+        type="text"
+        value="<%= listing.title %>"
+        class="form-control"
+        name="listing[title]"
+        placeholder="Enter title"
+        required
+      />
+      <div class="invalid-feedback">Please enter a title.</div>
+    </div>
+
+    <div class="form-group mb-2">
+      <label>Description</label>
+      <textarea
+        class="form-control"
+        name="listing[description]"
+        placeholder="Enter description"
+        rows="3"
+      >
+<%= listing.description %></textarea
+      >
+    </div>
+
+    
+    <div class="form-group mb-1">
+      <label>Upload New Image</label>
+      <input
+        type="file"
+        class="form-control"
+        name="listing[image]"
+      />
+    </div>
+    <div class="mb-2">
+      <div class=""><label for="previewImage">Previous Image:</label></div>
+      <img class="img-fluid rounded" src=<%= previewUrl %> alt="">
+    </div>
+
+    <div class="form-group mb-2">
+      <label>Price</label>
+      <input
+        type="number"
+        value="<%= listing.price %>"
+        class="form-control"
+        name="listing[price]"
+        placeholder="Enter Price"
+      />
+    </div>
+
+    <div class="form-group mb-2">
+      <label>Country</label>
+      <input
+        type="text"
+        value="<%= listing.country %>"
+        class="form-control"
+        name="listing[country]"
+        placeholder="Enter Country"
+      />
+    </div>
+
+    <div class="form-group mb-2">
+      <label>Location</label>
+      <input
+        type="text"
+        value="<%= listing.location %>"
+        class="form-control"
+        name="listing[location]"
+        placeholder="Enter Location"
+      />
+    </div>
+
+    <div class="d-flex justify-content-center mt-3">
+      <button type="submit" class="btn btn-success">Save Changes</button>
+    </div>
+  </form>
+</body>
