@@ -1,24 +1,76 @@
 <style>
- .btn-search{
-   background-color: #fe424d;
-   color: white;
-   border-radius: 25px;
+.navbar{
+  background-color: rgba(255,255,255,0.85) !important;
+  backdrop-filter: blur(8px);
+}
 
-   display: inline-flex;
-   align-items: center;
-   gap: 6px;
-   white-space: nowrap;
+/* Search Button */
+.btn-search{
+  background-color:#fe424d;
+  color:white;
+  border-radius:25px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  white-space:nowrap;
+  padding:6px 16px;
 }
 
 .btn-search:hover{
-   background-color: #ee3b46;
-   color: white;
+  background-color:#ee3b46;
+  color:white;
 }
 
+/* Search Input */
 .input-search{
-  border-radius: 25px;
-  padding: 0.5rem 3rem 0.5rem 3rem;
-  font-size: 1rem;
+  border-radius:25px;
+  padding:0.5rem 1.5rem;
+  font-size:0.95rem;
+}
+
+/* Desktop layout */
+.search form{
+  width:400px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px){
+
+  .navbar-collapse{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    margin-top:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  }
+
+  .search{
+    width:100%;
+    margin:10px 0;
+  }
+
+  .search form{
+    width:100%;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .input-search{
+    width:100%;
+  }
+
+  .btn-search{
+    width:100%;
+    justify-content:center;
+  }
+
+  .navbar-nav{
+    margin-top:10px;
+  }
+
+  .navbar-nav .nav-link{
+    padding:8px 0;
+  }
 }
 </style>
 
@@ -41,12 +93,12 @@
         <a class="nav-link" href="/listings">Explore</a>
       </div>
 
-      <div class="search ms-auto px-2">
-        <form class="d-flex" role="search">
+    <div class="search ms-md-auto px-2">       
+    <form class="d-flex" role="search">
       <input class="form-control me-2 input-search" type="search" placeholder="Search Destinations" aria-label="Search"/>
       <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
     </form>
-      </div>
+    </div>
 
       <div class="navbar-nav ms-auto">
         <% if(!currentUser){ %> 

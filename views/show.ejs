@@ -110,18 +110,20 @@
       <button class="btn btn-danger my-3">Submit</button>
     </div>
   </form>
-  <hr>
   <% } %>
+  <hr>
   <div class="row d-flex justify-content-center">
  <% listing.reviews.forEach(review => { %>
       <div class="col-md-4 mx-2 my-2">
-        <div class="card p-4">
+        <div class="card p-4 border border-dark-subtle">
            <h4>@<%= review.author.username %></h4>
            <p class="starability-result" data-rating=<%= review.rating %>></p>
            <p><%= review.comment %></p>
+            <% if(currentUser && listing.owner._id.equals(currentUser._id)){ %>
            <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
              <button class="btn btn-outline-danger ">Delete</button>
            </form>
+           <% }; %>
           </div>
         </div>
     <%}); %>

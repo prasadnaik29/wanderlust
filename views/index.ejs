@@ -1,11 +1,21 @@
 <% layout('/layouts/boilerplate') -%>
 <style>
+.cat-wrapper{
+  width:100%;
+  overflow:hidden;
+}
 
 #categories{
   display:flex;
-  flex-wrap: wrap;
   align-items:center;
   gap:25px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:5px;
+}
+
+#categories::-webkit-scrollbar{
+  display:none;
 }
 
 .category{
@@ -13,11 +23,12 @@
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  margin-top: 10px;
+  margin-top:10px;
   opacity:.65;
   cursor:pointer;
   border-bottom:2px solid transparent;
-  transition:0.4s;
+  transition:0.3s;
+  min-width:70px;
 }
 
 .category i{
@@ -41,26 +52,45 @@
 }
 
 .tax{
-  display: none;
+  display:none;
 }
 
 .tax-toggle{
-  border: 1px solid rgba(128, 128, 128, 0.63);
-  border-radius: 40px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.03);
-
+  border:1px solid rgba(128,128,128,0.63);
+  border-radius:40px;
+  display:flex;
+  align-items:center;
+  box-shadow:0 5px 5px rgba(0,0,0,0.03);
+  padding:8px 14px;
+  white-space:nowrap;
 }
 
 .tax-toggle:hover{
-  border: 1px solid rgba(49, 49, 49, 0.753);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border:1px solid rgba(49,49,49,0.75);
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
 
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px){
+
+  .cat-wrapper{
+    flex-direction:column;
+    align-items:flex-start !important;
+  }
+
+  #categories{
+    width:100%;
+    gap:18px;
+  }
+
+  .tax-toggle{
+    margin-top:12px;
+    margin-left:0 !important;
+    align-self:flex-end;
+  }
 }
 </style>
-<div class="cat-wrapper mt-3 d-flex justify-content-center">
-  <div id="categories">
+<div class="cat-wrapper mt-3 d-flex justify-content-between align-items-center px-3">  <div id="categories">
     <div class="category">
       <i class="fa-solid fa-fire"></i>
       <p>Trending</p>
